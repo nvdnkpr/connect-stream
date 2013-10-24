@@ -1,15 +1,14 @@
 # connect-stream
 
   ![](https://nodei.co/npm/connect-stream.png)
+
   ![](https://travis-ci.org/geta6/connect-stream.png)
 
   connect-stream adds 206 responsibility to connect (also express).
 
 ## install
 
-```
-npm i connect-stream
-```
+    npm i connect-stream
 
 ## usage
 

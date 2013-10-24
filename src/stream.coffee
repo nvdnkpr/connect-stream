@@ -41,7 +41,9 @@ class Stream
     if opt is no
       opt = @none
 
-  constructor: (opt) ->
+  constructor: (opts) ->
+    @path = opts[0]
+  _constructor: (opt) ->
     if typeof opt is 'string'
       @path = opt
       opt = arguments[1]
@@ -102,7 +104,7 @@ class Stream
       options = opt if typeof opt is 'object'
       callback = opt if typeof opt is 'function'
     options.headers or= {}
-    src = path.resolve src
+    src = path.join @path, src
     fs.stat src, (err, stats) =>
       if err
         callback err, 0, 0
@@ -126,7 +128,6 @@ class Stream
       stream.on 'close', ->
         callback null, start, end
       stream.on 'error', (err) ->
-        console.error '>', err
         callback err, start, end
       return stream.pipe res
 
